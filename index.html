@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quirino High School | Enrollment System</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">QHS</div>
+            <span>Quirino High School</span>
+        </div>
+        <div class="nav-links">
+            <button class="btn-text" id="btn-home">Home</button>
+            <button class="btn-text" id="btn-login-nav">Login</button>
+            <button class="btn-primary" id="btn-signup-nav">Sign Up</button>
+            <div class="user-profile hidden" id="user-profile">
+                <span id="user-display-name"></span>
+                <button class="btn-text" id="btn-logout">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Home Section -->
+        <section id="section-home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="badge">SY 2026 - 2027</div>
+                    <h1>Early Registration is Now Open</h1>
+                    <p>Join Quirino High School and secure your future. We offer comprehensive Junior and Senior High
+                        School programs designed for excellence.</p>
+                    <div class="hero-actions">
+                        <button class="btn-primary-large" id="btn-enroll-now">Enroll Now</button>
+                        <button class="btn-secondary-large" id="btn-learn-more">View Offerings</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="glass-card offerings-card">
+                        <h3>SHS Offerings</h3>
+                        <ul>
+                            <li><strong>STEM</strong> - Science, Technology, Engineering, Mathematics</li>
+                            <li><strong>ABM</strong> - Accountancy, Business, Management</li>
+                            <li><strong>TVL</strong> - Home Economics, ICT</li>
+                            <li><strong>Academic Track</strong> - Humanities & Social Science</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Auth Section (Login / Signup) -->
+        <section id="section-auth" class="section hidden">
+            <div class="auth-container">
+                <div class="auth-box glass-card">
+                    <div class="auth-toggle">
+                        <button class="toggle-btn active" id="toggle-login">Login</button>
+                        <button class="toggle-btn" id="toggle-signup">Sign Up</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="form-login" class="auth-form active">
+                        <h2>Welcome Back</h2>
+                        <p>Login to continue your enrollment.</p>
+                        <div class="input-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" required placeholder="example@gmail.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn-primary-full">Login</button>
+                    </form>
+
+                    <!-- Sign Up Form -->
+                    <form id="form-signup" class="auth-form hidden">
+                        <h2>Create Account</h2>
+                        <p>Register to start your enrollment process.</p>
+                        <div class="input-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" required placeholder="Juan Dela Cruz">
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-email">Email Address</label>
+                            <input type="email" id="signup-email" required placeholder="example@gmail.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn-primary-full">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enrollment Form Section -->
+        <section id="section-enrollment" class="section hidden">
+            <div class="enrollment-header">
+                <h2>Official Registration Form</h2>
+                <p>Please fill out all required fields carefully. This record will be submitted to the Quirino High
+                    School Registrar.</p>
+            </div>
+
+            <div class="enrollment-container glass-card">
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="step active" data-step="1">1. Learner Info</div>
+                    <div class="step" data-step="2">2. Academic Info</div>
+                    <div class="step" data-step="3">3. Review</div>
+                </div>
+
+                <form id="form-enrollment">
+                    <!-- Step 1: Learner Info -->
+                    <div class="form-step active" id="step-1">
+                        <h3>Learner Information</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="enroll-fname">First Name *</label>
+                                <input type="text" id="enroll-fname" name="entry.fname" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="enroll-lname">Last Name *</label>
+                                <input type="text" id="enroll-lname" name="entry.lname" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="enroll-dob">Date of Birth *</label>
+                                <input type="date" id="enroll-dob" name="entry.dob" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="enroll-gender">Gender *</label>
+                                <select id="enroll-gender" name="entry.gender" required>
+                                    <option value="" disabled selected>Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="input-group full-width">
+                                <label for="enroll-address">Complete Address *</label>
+                                <input type="text" id="enroll-address" name="entry.address" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="enroll-contact">Contact Number *</label>
+                                <input type="tel" id="enroll-contact" name="entry.contact" required>
+                            </div>
+                        </div>
+                        <div class="form-actions right">
+                            <button type="button" class="btn-primary btn-next">Next Step &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Academic Info -->
+                    <div class="form-step hidden" id="step-2">
+                        <h3>Academic Information</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="enroll-level">Grade Level to Enroll *</label>
+                                <select id="enroll-level" name="entry.level" required>
+                                    <option value="" disabled selected>Select Grade</option>
+                                    <option value="Grade 7">Grade 7</option>
+                                    <option value="Grade 8">Grade 8</option>
+                                    <option value="Grade 9">Grade 9</option>
+                                    <option value="Grade 10">Grade 10</option>
+                                    <option value="Grade 11">Grade 11</option>
+                                    <option value="Grade 12">Grade 12</option>
+                                    <option value="ALS">Alternative Learning System (ALS)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="enroll-track">Track / Strand (For SHS only)</label>
+                                <select id="enroll-track" name="entry.track">
+                                    <option value="None">Not Applicable (JHS)</option>
+                                    <option value="STEM">STEM</option>
+                                    <option value="ABM">ABM</option>
+                                    <option value="TVL - ICT">TVL - ICT</option>
+                                    <option value="TVL - HE">TVL - Home Economics</option>
+                                    <option value="HUMSS">Humanities & Social Science</option>
+                                </select>
+                            </div>
+                            <div class="input-group full-width">
+                                <label for="enroll-prevschool">Previous School Attended *</label>
+                                <input type="text" id="enroll-prevschool" name="entry.prevschool" required>
+                            </div>
+                        </div>
+                        <div class="form-actions stretch">
+                            <button type="button" class="btn-secondary btn-prev">&larr; Back</button>
+                            <button type="button" class="btn-primary btn-next-review">Review Details &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Review & Submit -->
+                    <div class="form-step hidden" id="step-3">
+                        <h3>Review Your Details</h3>
+                        <div class="review-box" id="review-content">
+                            <!-- Populated via JS -->
+                        </div>
+                        <div class="notice">
+                            <strong>Note:</strong> By clicking submit, your registration form will be sent securely to
+                            the school's registrar drive.
+                        </div>
+                        <div class="form-actions stretch">
+                            <button type="button" class="btn-secondary btn-prev">&larr; Back</button>
+                            <button type="submit" class="btn-primary-large" id="btn-submit-enrollment">Submit
+                                Registration</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success Modal -->
+            <div id="success-modal" class="modal hidden">
+                <div class="modal-content glass-card">
+                    <div class="success-icon">✓</div>
+                    <h2>Registration Successful!</h2>
+                    <p>Your enrollment application has been sent directly to the Quirino High School Google Drive
+                        database.</p>
+                    <p>Please wait for further announcements via the school official Facebook page.</p>
+                    <button class="btn-primary-full mt-4" id="btn-close-modal">Return Home</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script -->
+    <script src="app.js"></script>
+</body>
+
+</html>
